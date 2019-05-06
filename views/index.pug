@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  h1= title
+
+  div(class="col-md-4")
+    h2 Create Todo list
+
+    form(action="/todo_lists/create", method="post", class="well")
+      div(class="form-group")
+        label(for="name")
+          | Name
+        input(type="text", name="name", class="form-control")
+      input(type="submit" class="btn btn-default")
+
+  div(class="col-md-6")
+    h2 Todo Lists
+
+    ul
+      each todo_list in todo_lists
+        li
+          strong
+            = todo_list.name
+          | &nbsp;
+          a(href="/todo_lists/" + todo_list.id + "/destroy", class="btn btn-xs btn-warning") delete
+          ul
+            li
+              | Create task
+              form(action="/todo_lists/" + todo_list.id + "/todos/create", method="post", class="form-inline")
+                div(class="form-group")
+                  input(type="text", name="title", class="input-sm form-control")
+                  input(type="submit", class="btn btn-sm btn-default")
+            each todo in todo_list.Todos
+              li
+                strong
+                  = todo.title
+                | &nbsp;
+                a(href="/todo_lists/" + todo_list.id + "/todos/" + todo.id + "/destroy",  class="btn btn-xs btn-warning") delete
