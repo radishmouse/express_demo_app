@@ -10,6 +10,9 @@ router.post('/create', function(req, res) {
   });
 });
 
+// Interesting choice to use a GET request for modifying
+// the database. Any reason why you didn't use one of the
+// other HTTP verbs?
 router.get('/:todo_list_id/destroy', function(req, res) {
   models.TodoList.destroy({
     where: {

@@ -1,3 +1,4 @@
+// Perhaps this could go in a .env file?
 module.exports = {
   development: {
     username: "root",

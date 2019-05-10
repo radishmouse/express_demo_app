@@ -1,5 +1,9 @@
 'use strict';
+// I noticed that you're using 'use strict' here, but not
+// other places?
 
+// Also, is there a reason for this style of indentation.
+// It seems like this is the only place you're using it.
 var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
